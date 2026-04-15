@@ -1,1 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Digital Boost ayuda a negocios a verse m√°s profesionales online con p√°ginas web, campa√±as digitales simples y una presencia digital m√°s clara." />
+  <title>Digital Boost | P√°ginas web y marketing digital para negocios</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.08);
+      --panel-2: rgba(255,255,255,0.05);
+      --text: #f5f7fb;
+      --muted: #b7bfd3;
+      --accent: #6ee7b7;
+      --accent-2: #60a5fa;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(96,165,250,0.20), transparent 32%),
+        radial-gradient(circle at top right, rgba(110,231,183,0.16), transparent 26%),
+        linear-gradient(180deg, #0a0f1d 0%, #10182b 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding-top: 18px;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-lockup img {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-lockup span {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      color: var(--text);
+    }
+
+    .language-switch {
+      display: inline-flex;
+      gap: 8px;
+      padding: 6px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--panel-2);
+      backdrop-filter: blur(12px);
+    }
+
+    .lang-btn {
+      min-width: 54px;
+      min-height: 38px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--accent), #86efac);
+      color: #08111f;
+    }
+
+    .hero {
+      padding: 56px 0 56px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 14px;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(40px, 7vw, 72px);
+      max-width: 860px;
+    }
+
+    .lead {
+      font-size: clamp(18px, 2.4vw, 22px);
+      color: var(--muted);
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      color: #08111f;
+      background: linear-gradient(135deg, var(--accent), #86efac);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .trust-item {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .trust-item span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      backdrop-filter: blur(12px);
+    }
+
+    .stat-number {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 10px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service h3,
+    .process h3,
+    .faq h3 {
+      font-size: 22px;
+    }
+
+    .service p,
+    .process p,
+    .faq p,
+    .card p,
+    li {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 14px 0 0;
+    }
+
+    .cta {
+      margin: 40px 0 70px;
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(96,165,250,0.18), rgba(110,231,183,0.12));
+      box-shadow: var(--shadow);
+    }
+
+    .footer {
+      padding: 10px 0 42px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .stats,
+      .trust-strip,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand-lockup">
+        <img src="logo-digital-boost-icon.svg" alt="Digital Boost logo" />
+        <span>Digital Boost</span>
+      </div>
+      <div class="language-switch" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang-btn="es">ES</button>
+        <button class="lang-btn" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="pill" data-i18n="pill"></div>
+      <h1 data-i18n="heroTitle"></h1>
+      <p class="lead" data-i18n="heroLead"></p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://wa.me/17173338410" target="_blank" rel="noopener" data-i18n="heroCtaPrimary"></a>
+        <a class="btn btn-secondary" href="#servicios" data-i18n="heroCtaSecondary"></a>
+      </div>
+      <div class="trust-strip">
+        <div class="trust-item">
+          <strong data-i18n="trust1Title"></strong>
+          <span data-i18n="trust1Text"></span>
+        </div>
+        <div class="trust-item">
+          <strong data-i18n="trust2Title"></strong>
+          <span data-i18n="trust2Text"></span>
+        </div>
+        <div class="trust-item">
+          <strong data-i18n="trust3Title"></strong>
+          <span data-i18n="trust3Text"></span>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="card">
+          <div class="stat-number" data-i18n="stat1Title"></div>
+          <p data-i18n="stat1Text"></p>
+        </div>
+        <div class="card">
+          <div class="stat-number" data-i18n="stat2Title"></div>
+          <p data-i18n="stat2Text"></p>
+        </div>
+        <div class="card">
+          <div class="stat-number" data-i18n="stat3Title"></div>
+          <p data-i18n="stat3Text"></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="servicios">
+    <div class="container">
+      <h2 class="section-title" data-i18n="servicesTitle"></h2>
+      <p class="section-copy" data-i18n="servicesCopy"></p>
+      <div class="grid-3">
+        <div class="card service">
+          <h3 data-i18n="service1Title"></h3>
+          <p data-i18n="service1Text"></p>
+          <ul>
+            <li data-i18n="service1Item1"></li>
+            <li data-i18n="service1Item2"></li>
+            <li data-i18n="service1Item3"></li>
+          </ul>
+        </div>
+        <div class="card service">
+          <h3 data-i18n="service2Title"></h3>
+          <p data-i18n="service2Text"></p>
+          <ul>
+            <li data-i18n="service2Item1"></li>
+            <li data-i18n="service2Item2"></li>
+            <li data-i18n="service2Item3"></li>
+          </ul>
+        </div>
+        <div class="card service">
+          <h3 data-i18n="service3Title"></h3>
+          <p data-i18n="service3Text"></p>
+          <ul>
+            <li data-i18n="service3Item1"></li>
+            <li data-i18n="service3Item2"></li>
+            <li data-i18n="service3Item3"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title" data-i18n="forWhoTitle"></h2>
+      <div class="grid-2">
+        <div class="card">
+          <p data-i18n="forWhoText1"></p>
+        </div>
+        <div class="card">
+          <p data-i18n="forWhoText2"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title" data-i18n="processTitle"></h2>
+      <p class="section-copy" data-i18n="processCopy"></p>
+      <div class="grid-3">
+        <div class="card process">
+          <h3 data-i18n="process1Title"></h3>
+          <p data-i18n="process1Text"></p>
+        </div>
+        <div class="card process">
+          <h3 data-i18n="process2Title"></h3>
+          <p data-i18n="process2Text"></p>
+        </div>
+        <div class="card process">
+          <h3 data-i18n="process3Title"></h3>
+          <p data-i18n="process3Text"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title" data-i18n="faqTitle"></h2>
+      <div class="grid-2">
+        <div class="card faq">
+          <h3 data-i18n="faq1Title"></h3>
+          <p data-i18n="faq1Text"></p>
+        </div>
+        <div class="card faq">
+          <h3 data-i18n="faq2Title"></h3>
+          <p data-i18n="faq2Text"></p>
+        </div>
+        <div class="card faq">
+          <h3 data-i18n="faq3Title"></h3>
+          <p data-i18n="faq3Text"></p>
+        </div>
+        <div class="card faq">
+          <h3 data-i18n="faq4Title"></h3>
+          <p data-i18n="faq4Text"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="cta">
+        <h2 class="section-title" data-i18n="ctaTitle"></h2>
+        <p class="section-copy" data-i18n="ctaText"></p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://wa.me/17173338410" target="_blank" rel="noopener" data-i18n="ctaPrimary"></a>
+          <a class="btn btn-secondary" href="mailto:ra.digitalboost.media@gmail.com" data-i18n="ctaSecondary"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" data-i18n="footerText"></footer>
+
+  <script>
+    const translations = {
+      es: {
+        pill: 'Digital Boost | p√°ginas web y marketing digital para negocios',
+        heroTitle: 'Ayudo a negocios a conseguir m√°s consultas con una presencia digital m√°s clara, profesional y lista para vender.',
+        heroLead: 'En Digital Boost mejoramos tu perfil, tu p√°gina y tu comunicaci√≥n online para que tu negocio se vea serio y sea m√°s f√°cil de contratar.',
+        heroCtaPrimary: 'Pide tu diagn√≥stico',
+        heroCtaSecondary: 'Ver servicios',
+        trust1Title: 'Atenci√≥n directa',
+        trust1Text: 'Hablas directamente con quien organiza y trabaja tu proyecto.',
+        trust2Title: 'Espa√±ol e ingl√©s',
+        trust2Text: 'La p√°gina puede presentarse en ambos idiomas con una estructura clara.',
+        trust3Title: 'Sin complicarlo de m√°s',
+        trust3Text: 'Trabajamos paso a paso para mejorar presencia, mensaje y contacto.',
+        stat1Title: 'Perfil m√°s profesional',
+        stat1Text: 'Mejoramos c√≥mo se ve tu negocio para que transmita m√°s seriedad y confianza desde el primer vistazo.',
+        stat2Title: 'Mensaje m√°s claro',
+        stat2Text: 'Ordenamos tu oferta y tu comunicaci√≥n para que el cliente entienda r√°pido qu√© haces y por qu√© elegirte.',
+        stat3Title: 'M√°s consultas',
+        stat3Text: 'Creamos una presencia digital m√°s clara y m√°s f√°cil de contratar para generar m√°s oportunidades reales.',
+        servicesTitle: 'Servicios',
+        servicesCopy: 'Estos servicios est√°n pensados para que tu negocio se vea m√°s serio, comunique mejor y genere m√°s oportunidades reales.',
+        service1Title: 'Optimizaci√≥n de perfil',
+        service1Text: 'Hago que tu perfil se vea m√°s profesional, m√°s claro y m√°s confiable para que el cliente entienda r√°pido lo que ofreces.',
+        service1Item1: 'Bio clara y profesional',
+        service1Item2: 'Mejora de imagen y presentaci√≥n',
+        service1Item3: 'Llamada a la acci√≥n mejor definida',
+        service2Title: 'Campa√±as digitales simples',
+        service2Text: 'Te ayudo a lanzar campa√±as digitales simples con una idea clara, mensajes bien pensados y una estructura m√°s lista para convertir.',
+        service2Item1: 'Idea de campa√±a',
+        service2Item2: 'Copies y mensajes',
+        service2Item3: 'Estructura b√°sica de lanzamiento',
+        service3Title: 'P√°ginas web para negocios',
+        service3Text: 'Te creo una p√°gina clara y profesional para presentar tu negocio, explicar mejor tu oferta y facilitar que te contacten.',
+        service3Item1: 'Estructura de oferta',
+        service3Item2: 'Texto principal de venta',
+        service3Item3: 'Contacto claro y profesional',
+        forWhoTitle: '¬øPara qui√©n es este servicio?',
+        forWhoText1: 'Para negocios, emprendedores y marcas que quieren verse m√°s profesionales online y convertir mejor su presencia digital en oportunidades reales.',
+        forWhoText2: 'Si tu negocio se ve desordenado, comunica poco o no deja claro qu√© ofrece, aqu√≠ tienes una base seria para empezar a corregirlo.',
+        processTitle: 'C√≥mo trabajo',
+        processCopy: 'Un proceso claro, profesional y enfocado en resultados reales.',
+        process1Title: '1. Diagn√≥stico',
+        process1Text: 'Reviso tu negocio, tu perfil y tu presencia digital para detectar qu√© est√° frenando tus resultados.',
+        process2Title: '2. Propuesta',
+        process2Text: 'Defino contigo una soluci√≥n clara, prioridades concretas y la mejor forma de presentar tu negocio online.',
+        process3Title: '3. Implementaci√≥n',
+        process3Text: 'Organizo y ejecuto los cambios para que tu negocio se vea mejor, comunique mejor y convierta mejor.',
+        faqTitle: 'Preguntas frecuentes',
+        faq1Title: '¬øTrabajas con cualquier tipo de negocio?',
+        faq1Text: 'S√≠, siempre que el proyecto quiera crecer en serio y est√© dispuesto a mejorar su comunicaci√≥n digital.',
+        faq2Title: '¬øTambi√©n haces p√°ginas web para negocios?',
+        faq2Text: 'S√≠. Puedo ayudarte a crear una p√°gina clara y profesional para presentar tu negocio y facilitar que te contacten.',
+        faq3Title: '¬øTambi√©n ayudas con campa√±as digitales?',
+        faq3Text: 'S√≠. Puedo ayudarte con campa√±as digitales simples, estructura, ideas y mensajes para mover mejor tu negocio online.',
+        faq4Title: '¬øC√≥mo te contacto?',
+        faq4Text: 'Puedes escribirme por email y luego a√±adir WhatsApp o m√°s canales si hace falta.',
+        ctaTitle: '¬øListo para mejorar tu presencia digital?',
+        ctaText: 'Si quieres que tu negocio se vea m√°s profesional, comunique mejor y genere m√°s consultas, escr√≠beme y lo trabajamos paso a paso.',
+        ctaPrimary: 'Escr√≠beme por WhatsApp',
+        ctaSecondary: 'Env√≠ame un email',
+        footerText: 'Digital Boost, base creada para ofrecer servicios de marketing digital. Podemos personalizar contacto, colores y estilo.'
+      },
+      en: {
+        pill: 'Digital Boost | websites and digital marketing for businesses',
+        heroTitle: 'I help businesses get more inquiries with a clearer, more professional digital presence that is ready to sell.',
+        heroLead: 'At Digital Boost, we improve your profile, website, and online communication so your business looks serious and easier to hire.',
+        heroCtaPrimary: 'Request your audit',
+        heroCtaSecondary: 'View services',
+        trust1Title: 'Direct communication',
+        trust1Text: 'You speak directly with the person organizing and building your project.',
+        trust2Title: 'Spanish and English',
+        trust2Text: 'Your page can be presented clearly in both languages.',
+        trust3Title: 'No unnecessary complexity',
+        trust3Text: 'We work step by step to improve presence, messaging, and contact.',
+        stat1Title: 'A more professional profile',
+        stat1Text: 'Elevating your brand‚Äôs visual identity to project immediate professionalism and trust.',
+        stat2Title: 'A clearer message',
+        stat2Text: 'We organize your offer and communication so clients quickly understand what you do and why to choose you.',
+        stat3Title: 'More inquiries',
+        stat3Text: 'We build a clearer digital presence that is easier to hire and creates more real opportunities.',
+        servicesTitle: 'Services',
+        servicesCopy: 'These services are designed to make your business look more serious, communicate more clearly, and generate more real opportunities.',
+        service1Title: 'Profile optimization',
+        service1Text: 'I make your profile look more professional, clearer, and more trustworthy so clients quickly understand what you offer.',
+        service1Item1: 'Clear and professional bio',
+        service1Item2: 'Stronger image and presentation',
+        service1Item3: 'Better call to action',
+        service2Title: 'Simple digital campaigns',
+        service2Text: 'I help you launch simple digital campaigns with a clear idea, stronger messaging, and a structure that is more ready to convert.',
+        service2Item1: 'Campaign idea',
+        service2Item2: 'Copy and messaging',
+        service2Item3: 'Basic launch structure',
+        service3Title: 'Websites for businesses',
+        service3Text: 'I create a clear, professional website to showcase your business, explain your offer better, and make it easy for clients to reach you.',
+        service3Item1: 'Offer structure',
+        service3Item2: 'Main sales message',
+        service3Item3: 'Clear and professional contact',
+        forWhoTitle: 'Who is this for?',
+        forWhoText1: 'For businesses, entrepreneurs, and brands looking to elevate their professional online presence and turn digital reach into real opportunities.',
+        forWhoText2: 'If your business lacks clarity or feels disorganized online, we provide the solid foundation you need to start professionalizing your brand.',
+        processTitle: 'How I Work',
+        processCopy: 'A clear, professional process focused on delivering tangible results.',
+        process1Title: '1. Diagnosis',
+        process1Text: 'I audit your business, profile, and digital presence to identify what is holding back your results.',
+        process2Title: '2. Proposal',
+        process2Text: 'Together, we define a clear solution, concrete priorities, and the best strategy to present your business online.',
+        process3Title: '3. Implementation',
+        process3Text: 'I manage and execute the changes so your business looks better, communicates effectively, and converts more.',
+        faqTitle: 'Frequently Asked Questions',
+        faq1Title: 'Do you work with any type of business?',
+        faq1Text: 'Yes, as long as the project is serious about growing and willing to improve its digital communication.',
+        faq2Title: 'Do you also build business websites?',
+        faq2Text: 'Yes. I can help you create a clear, professional page to showcase your business and make it easy for clients to contact you.',
+        faq3Title: 'Do you also help with digital campaigns?',
+        faq3Text: 'Yes. I can help you with straightforward digital campaigns, strategy, and messaging to help your business grow online.',
+        faq4Title: 'How can I contact you?',
+        faq4Text: 'You can reach me via email, and we can move to WhatsApp or other channels if needed.',
+        ctaTitle: 'Ready to improve your digital presence?',
+        ctaText: 'If you want your business to look more professional, communicate more clearly, and generate more inquiries, contact me and we will build it step by step.',
+        ctaPrimary: 'Message me on WhatsApp',
+        ctaSecondary: 'Send me an email',
+        footerText: 'Digital Boost, a foundation created for offering digital marketing services. Contact details, colors, and style are all customizable.'
+      }
+    };
+
+    function setLanguage(lang) {
+      const dictionary = translations[lang] || translations.es;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.dataset.i18n;
+        if (dictionary[key]) element.textContent = dictionary[key];
+      });
+      document.querySelectorAll('[data-lang-btn]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.langBtn === lang);
+      });
+      localStorage.setItem('impulso-digital-lang', lang);
+    }
+
+    document.querySelectorAll('[data-lang-btn]').forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.dataset.langBtn));
+    });
+
+    setLanguage(localStorage.getItem('impulso-digital-lang') || 'es');
+  </script>
+</body>
+</html>
