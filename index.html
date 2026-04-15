@@ -144,6 +144,9 @@
       text-decoration: none;
       font-weight: 700;
       transition: 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font: inherit;
     }
 
     .btn-primary {
@@ -258,6 +261,35 @@
       border: 1px solid var(--border);
       background: linear-gradient(135deg, rgba(96,165,250,0.18), rgba(110,231,183,0.12));
       box-shadow: var(--shadow);
+    }
+
+    .review-grid {
+      align-items: stretch;
+    }
+
+    .review-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .review-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font: inherit;
+    }
+
+    .review-input::placeholder {
+      color: var(--muted);
+    }
+
+    .review-textarea {
+      min-height: 140px;
+      resize: vertical;
     }
 
     .footer {
@@ -484,6 +516,27 @@
     </div>
   </section>
 
+  <section id="resenas">
+    <div class="container">
+      <h2 class="section-title" data-i18n="reviewTitle"></h2>
+      <p class="section-copy" data-i18n="reviewText"></p>
+      <div class="grid-2 review-grid">
+        <div class="card review-form">
+          <input id="reviewName" class="review-input" type="text" data-i18n-placeholder="reviewNamePlaceholder" />
+          <textarea id="reviewMessage" class="review-input review-textarea" data-i18n-placeholder="reviewMessagePlaceholder"></textarea>
+          <div class="actions">
+            <button class="btn btn-primary" type="button" onclick="sendReview('whatsapp')" data-i18n="reviewPrimary"></button>
+            <button class="btn btn-secondary" type="button" onclick="sendReview('email')" data-i18n="reviewSecondary"></button>
+          </div>
+        </div>
+        <div class="card">
+          <h3 data-i18n="reviewHelpTitle"></h3>
+          <p data-i18n="reviewHelpText"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contacto">
     <div class="container">
       <div class="cta">
@@ -586,6 +639,14 @@
         faq3Text: 'Sí. Puedo ayudarte con campañas digitales simples, estructura, ideas y mensajes para mover mejor tu negocio online.',
         faq4Title: '¿Cómo te contacto?',
         faq4Text: 'Puedes escribirme por email y luego añadir WhatsApp o más canales si hace falta.',
+        reviewTitle: 'Deja tu reseña',
+        reviewText: 'Si pasaste por la página y quieres dejar tu opinión, puedes escribir tu reseña aquí y enviarla directo por WhatsApp o email.',
+        reviewNamePlaceholder: 'Tu nombre o nombre del negocio',
+        reviewMessagePlaceholder: 'Escribe aquí tu reseña',
+        reviewPrimary: 'Enviar reseña por WhatsApp',
+        reviewSecondary: 'Enviar reseña por email',
+        reviewHelpTitle: '¿Para qué sirve esta parte?',
+        reviewHelpText: 'Esta sección permite que clientes o visitantes dejen su reseña de forma rápida para ayudarte a recopilar opiniones reales y fortalecer tu presencia digital.',
         ctaTitle: '¿Listo para mejorar tu presencia digital?',
         ctaText: 'Si quieres que tu negocio se vea más profesional, comunique mejor y genere más consultas, escríbeme y lo trabajamos paso a paso.',
         ctaPrimary: 'Escríbeme por WhatsApp',
@@ -677,6 +738,14 @@
         faq3Text: 'Yes. I can help you with straightforward digital campaigns, strategy, and messaging to help your business grow online.',
         faq4Title: 'How can I contact you?',
         faq4Text: 'You can reach me via email, and we can move to WhatsApp or other channels if needed.',
+        reviewTitle: 'Leave your review',
+        reviewText: 'If you visited the page and want to leave your opinion, you can write your review here and send it directly by WhatsApp or email.',
+        reviewNamePlaceholder: 'Your name or business name',
+        reviewMessagePlaceholder: 'Write your review here',
+        reviewPrimary: 'Send review by WhatsApp',
+        reviewSecondary: 'Send review by email',
+        reviewHelpTitle: 'What is this section for?',
+        reviewHelpText: 'This section lets clients or visitors leave a quick review so you can collect real feedback and strengthen your digital presence.',
         ctaTitle: 'Ready to improve your digital presence?',
         ctaText: 'If you want your business to look more professional, communicate more clearly, and generate more inquiries, contact me and we will build it step by step.',
         ctaPrimary: 'Message me on WhatsApp',
@@ -692,10 +761,34 @@
         const key = element.dataset.i18n;
         if (dictionary[key]) element.textContent = dictionary[key];
       });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+        const key = element.dataset.i18nPlaceholder;
+        if (dictionary[key]) element.placeholder = dictionary[key];
+      });
       document.querySelectorAll('[data-lang-btn]').forEach((button) => {
         button.classList.toggle('active', button.dataset.langBtn === lang);
       });
       localStorage.setItem('impulso-digital-lang', lang);
+    }
+
+    function sendReview(channel) {
+      const lang = localStorage.getItem('impulso-digital-lang') || 'es';
+      const name = document.getElementById('reviewName').value.trim();
+      const message = document.getElementById('reviewMessage').value.trim();
+
+      if (!message) {
+        alert(lang === 'en' ? 'Please write your review first.' : 'Por favor escribe tu reseña primero.');
+        return;
+      }
+
+      const intro = lang === 'en' ? 'Review from website' : 'Reseña desde la página web';
+      const body = `${intro}\n\n${name ? `${lang === 'en' ? 'Name' : 'Nombre'}: ${name}\n` : ''}${lang === 'en' ? 'Review' : 'Reseña'}: ${message}`;
+
+      if (channel === 'whatsapp') {
+        window.open(`https://wa.me/17173338410?text=${encodeURIComponent(body)}`, '_blank');
+      } else {
+        window.location.href = `mailto:ra.digitalboost.media@gmail.com?subject=${encodeURIComponent(lang === 'en' ? 'Website review' : 'Reseña desde la web')}&body=${encodeURIComponent(body)}`;
+      }
     }
 
     document.querySelectorAll('[data-lang-btn]').forEach((button) => {
